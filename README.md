@@ -8,9 +8,9 @@ Creates DRM free copies of Audible audiobook in both M4B and MP3 format, retaini
  Audible activation bytes placed with this script in a file named 'bytes.txt'
  Can be obtained with https://github.com/inAudible-NG/audible-activator or offline using https://github.com/inAudible-NG/tables
  
- ffmpeg, AtomicParsley, jq, lame
+ ffmpeg, AtomicParsley, jq, lame, GNU Parallel
  
- `sudo apt install ffmpeg libavcodec-extra AtomicParsley jq`
+ `sudo apt install ffmpeg libavcodec-extra AtomicParsley jq parallel`
 
  ## Usage
  `./drmfreeaudible.sh [audible.aax] [(optional)output options]`
