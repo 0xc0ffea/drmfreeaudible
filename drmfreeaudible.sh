@@ -33,7 +33,7 @@ if [ "$1" == "" -o "$SHOWHELP" == 1 ]; then
  Requirements
  ============
  Audible activation bytes placed with this script in a file named 'bytes.txt'
- Can be obtained offline with https://github.com/inAudible-NG/tables
+ Can be obtained https://github.com/inAudible-NG/audible-activator
  
  ffmpeg, AtomicParsley, jq, lame, GNU Parallel
  sudo apt install ffmpeg libavcodec-extra AtomicParsley jq parallel
@@ -63,7 +63,7 @@ else
     echo -e "\
  Activation bytes file (bytes.txt) is missing! 
 
- Please use https://github.com/inAudible-NG/tables to get bytes and save them to
+ Please use https://github.com/inAudible-NG/audible-activator to get bytes and save them to
  a file named bytes.txt
 
 "

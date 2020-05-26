@@ -6,7 +6,7 @@ Creates DRM free copies of Audible audiobook in both M4B and MP3 format, retaini
 
  ## Requirements
  Audible activation bytes placed with this script in a file named 'bytes.txt'
- Can be obtained with https://github.com/inAudible-NG/audible-activator or offline using https://github.com/inAudible-NG/tables
+ Can be obtained with https://github.com/inAudible-NG/audible-activator 
  
  ffmpeg, AtomicParsley, jq, lame, GNU Parallel
  
