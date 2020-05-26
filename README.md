@@ -9,6 +9,7 @@ Creates DRM free copies of Audible audiobook in both M4B and MP3 format, retaini
  Can be obtained offline with https://github.com/inAudible-NG/tables
  
  ffmpeg, AtomicParsley, jq, lame
+ 
  `sudo apt install ffmpeg libavcodec-extra AtomicParsley jq`
 
  Usage
