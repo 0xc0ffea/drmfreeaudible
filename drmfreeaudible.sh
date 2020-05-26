@@ -35,7 +35,7 @@ if [ "$1" == "" -o "$SHOWHELP" == 1 ]; then
  Audible activation bytes placed with this script in a file named 'bytes.txt'
  Can be obtained offline with https://github.com/inAudible-NG/tables
  
- ffmpeg, AtomicParsley, jq, lame, GNU Paralel
+ ffmpeg, AtomicParsley, jq, lame, GNU Parallel
  sudo apt install ffmpeg libavcodec-extra AtomicParsley jq parallel
 
  Usage
