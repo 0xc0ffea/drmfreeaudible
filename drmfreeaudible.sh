@@ -76,13 +76,13 @@ fi
 WORKPATH=$(mktemp -d -t ${0##*/}-XXXXXXXXXX)
 
 # Book info
-BOOKTITLE=$(ffprobe -v quiet -show_format -activation_bytes $ABYTES "$1" | grep "TAG:title" | cut -d"=" -f2)
-AUTHOR=$(ffprobe -v quiet -show_format -activation_bytes $ABYTES "$1" | grep "TAG:artist" | cut -d"=" -f2)
-YEAR=$(ffprobe -v quiet -show_format -activation_bytes $ABYTES "$1" | grep "TAG:date" | cut -d"=" -f2)
-COMMENT=$(ffprobe -v quiet -show_format -activation_bytes $ABYTES "$1" | grep "TAG:comment" | cut -d"=" -f2)
+BOOKTITLE=$(ffprobe -v quiet -show_format -activation_bytes $ABYTES "$1" | grep "TAG:title" | cut -d"=" -f2 | tr -d '"')
+AUTHOR=$(ffprobe -v quiet -show_format -activation_bytes $ABYTES "$1" | grep "TAG:artist" | cut -d"=" -f2 | tr -d '"')
+YEAR=$(ffprobe -v quiet -show_format -activation_bytes $ABYTES "$1" | grep "TAG:date" | cut -d"=" -f2 | tr -d '"')
+COMMENT=$(ffprobe -v quiet -show_format -activation_bytes $ABYTES "$1" | grep "TAG:comment" | cut -d"=" -f2 | tr -d '"')
 ffmpeg -loglevel error -activation_bytes $ABYTES -i "$1" -f ffmetadata "$WORKPATH/metadata.txt"
-ARTIST_SORT=$(sed 's/.*=\(.*\)/\1/' <<<$(cat "$WORKPATH/metadata.txt" | grep -m 1 ^sort_artist))
-ALBUM_SORT=$(sed 's/.*=\(.*\)/\1/' <<<$(cat "$WORKPATH/metadata.txt" | grep -m 1 ^sort_album))
+ARTIST_SORT=$(sed 's/.*=\(.*\)/\1/' <<<$(cat "$WORKPATH/metadata.txt" | grep -m 1 ^sort_artist | tr -d '"'))
+ALBUM_SORT=$(sed 's/.*=\(.*\)/\1/' <<<$(cat "$WORKPATH/metadata.txt" | grep -m 1 ^sort_album | tr -d '"'))
 
 # If a title begins with A, An, or The, we want to rename it so it sorts well
 TOKENWORDS=("A" "An" "The")
@@ -113,7 +113,7 @@ ffprobe -loglevel error -activation_bytes $ABYTES -i "$1" -print_format json -sh
 readarray -t ID <<< $(jq -r '.chapters[].id' "$WORKPATH/chapters.json")
 readarray -t START_TIME <<< $(jq -r '.chapters[].start_time' "$WORKPATH/chapters.json")
 readarray -t END_TIME <<< $(jq -r '.chapters[].end_time' "$WORKPATH/chapters.json")
-readarray -t TITLE <<< $(jq -r '.chapters[].tags.title' "$WORKPATH/chapters.json")
+readarray -t TITLE <<< $(jq -r '.chapters[].tags.title' "$WORKPATH/chapters.json" | tr -d '"')
 
 # extract cover image
 echo "- Extracting Cover Image"
