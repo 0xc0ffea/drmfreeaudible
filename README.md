@@ -1,51 +1,58 @@
 # DRM free Audible
 
-Creates DRM free M4B copies of Audible AAX audiobooks,
-Optionally creates per chapter MP3 with M3U playlist.
-Retains all metadata including cover image.
+Outputs DRM free copies of encrypted Audible AAX audiobooks in M4B and/or per chapter MP3 with M3U playlist. Retains all metadata including cover image.
 
-Accepts Audiable AAX and unencrypted M4B (for MP3 conversion)
+Accepts Audible AAX and unencrypted M4B (for MP3 conversion)
 
-Outputs M4B audiobook and (optionally) MP3 one file per-chapter with M3U.
+## Requirements
+AAX input files require Audible activation bytes placed with this script in a file named 'bytes.txt' or specified on command like using --bytes
 
-
- ## Requirements
-AAX input files require Audible activation bytes placed with this script
-in a file named 'bytes.txt'
 Can be obtained using https://github.com/inAudible-NG/audible-activator
  
-ffmpeg, AtomicParsley, jq, lame, GNU Parallel
+Dependencies : ffmpeg, AtomicParsley, jq, lame, GNU Parallel
  
  `sudo apt install ffmpeg libavcodec-extra AtomicParsley jq parallel`
 
 
  ## Usage
- `./drmfreeaudible.sh [audible.aax] [(optional)output options]`
+ `./drmfreeaudible.sh [audible.aax|book.m4b] [input options] [output options]`
 
-[output options] is optional and can be any combination of :-
-*   --dryrun          Don't actually output or encode anything. Useful for previewing a batch job and identifying inputfiles with (some) errors.
-*   --nom4b           Don't copy any M4B to destination (will still be created as part of process)
-*   --noparallelmp3   Don't use GNU Parallel for encoding MP3, much slower but handy of you're using the machine while it processes.
-*   --reencode        Reencode output M4B (slow, defaults to 64K) Useful for reducing final file size, replacing files itunes refuses to play (or mistakes for LIVE\Podcast), and fixing files with errors. (overwrites --nom4b)
-*   --mp3             MP3 one file per-chapter with M3U. Implied if passed an M4B file.
+  [input options] 
+
+*   **--bytes=XXXXX**           Audible activation bytes. 
+*   **--bytes=file.txt**        File containing Audible activation bytes.
+
+ [output options] (at least --m4b or --mp3 is required)
+*   **--dryrun**                Don't output or encode anything. Useful for previewing a batch job and identifying inputfiles with (some) errors.
+*   **--noparallel**            Don't use GNU Parallel for encoding MP3, much slower. Handy if you're using the machine while it processes.
+*   **--reencode**              Reencode output M4B. SLOW. Useful for reducing final file size, replacing files itunes refuses to play (or mistakes for LIVE\Podcast), and fixing files with errors. (presumes --m4b)
+*   **--m4b**                   Output M4B Audiobook format. One file with chapters & cover.
+*   **--m4bbitrate=**           Set the bitrate used by --reencode (defaults to 64k).
+*   **--mp3**                   MP3 one file per-chapter with M3U. Implied if passed an M4B file.
+*   **--mp3bitrate=**           Set the MP3 encode bitrate (defaults to 64k).
 
 
- ## Notes
-Specifying --nomb4 without --reencode or --mp3 will result in a folder with just the cover image, slightly more than --dryrun which outputs nothing.
+ ## Example Usage
+Create DRM Free M4B file from Audible AAX (with bytes in bytes.txt file)
+`./drmfreeaudible.sh  book.aax --m4b`
 
-For unattened batch processing (*.aax or *.m4b as input) do a --dryrun and replace any files that show error messages if possible .. or just YOLO. Use  of --reencode is reccomended as it maybe might clean up and fix some issues with source files.
+Batch process multiple Audible AAX files (with bytes in bytes.txt file)
+`./drmfreeaudible.sh  ./my_audiable_books/*.aax --m4b`
+
+Create DRM free M4b and MP3 set from Audible AAX with bytes on cmd line.
+`./drmfreeaudible.sh  book.aax --bytes=XXXXXX --m4b --mp3`
+
+Create per chapter MP3 with low bitrate from M4B file (no bytes required)
+`./drmfreeaudible.sh  book.m4b --mp3 --mp3bitrate=32k`
+
+For unattened batch processing (*.aax or *.m4b as input) do a --dryrun and replace any files that show error messages if possible .. or just YOLO. Use of --reencode is reccomended as it maybe might clean up and fix some issues with source files.
+
+Some M4B files will show in iTunes as being LIVE\Podcast and not show correct run time or chapters. --reeconde corrects this.
 
 
  ## Anti-Piracy Notice
-Note that this project **does NOT ‘crack’** the DRM. It simply allows the user to
-use their own encryption key (fetched from Audible servers) to decrypt the
-audiobook in the same manner that the official audiobook playing software does.
+Note that this project **does NOT ‘crack’** the DRM. It simply allows the user to use their own encryption key (fetched from Audible servers) to decrypt the audiobook in the same manner that the official audiobook playing software does.
 
-Please only use this application for gaining full access to your own audiobooks
-for archiving/conversion/convenience. DeDRMed audiobooks should not be uploaded
-to open servers, torrents, or other methods of mass distribution. No help will
-be given to people doing such things. Authors, retailers, and publishers all
-need to make a living, so that they can continue to produce audiobooks for us to
-hear, and enjoy. Don’t be a parasite.
+Please only use this application for gaining full access to your own audiobooks for archiving/conversion/convenience. DeDRMed audiobooks should not be uploaded to open servers, torrents, or other methods of mass distribution. No help will be given to people doing such things. Authors, retailers, and publishers all need to make a living, so that they can continue to produce audiobooks for us to hear, and enjoy. Don’t be a parasite.
 
 Borrowed from https://apprenticealf.wordpress.com/
