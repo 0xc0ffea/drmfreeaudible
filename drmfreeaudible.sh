@@ -45,15 +45,19 @@ Usage
 Example Usage
 =============
 Create DRM Free M4B file from Audible AAX (with bytes in bytes.txt file)
+
 ./${0##*/} book.aax --m4b
 
 Batch process multiple Audible AAX files (with bytes in bytes.txt file)
+
 ./${0##*/} ./my_audiable_books/*.aax --m4b
 
 Create DRM free M4b and MP3 set from Audible AAX with bytes on cmd line.
+
 ./${0##*/} book.aax --bytes=XXXXXX --m4b --mp3
 
 Create per chapter MP3 with low bitrate from M4B file (no bytes required)
+
 ./${0##*/} book.m4b --mp3 --mp3bitrate=32k
 
 For unattened batch processing (*.aax or *.m4b as input) do a --dryrun and 
