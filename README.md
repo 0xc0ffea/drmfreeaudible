@@ -5,7 +5,7 @@ Outputs DRM free copies of encrypted Audible AAX audiobooks in M4B and/or per ch
 Accepts Audible AAX and unencrypted M4B (for MP3 conversion)
 
 ## Requirements
-AAX input files require Audible activation bytes placed with this script in a file named 'bytes.txt' or specified on command like using --bytes
+AAX input files require Audible activation bytes placed with this script in a file named 'bytes.txt' or specified on command line using --bytes
 
 Can be obtained using https://github.com/inAudible-NG/audible-activator
  
@@ -28,7 +28,7 @@ Dependencies : ffmpeg, AtomicParsley, jq, lame, GNU Parallel
 *   **--reencode**              Reencode output M4B. SLOW. Useful for reducing final file size, replacing files itunes refuses to play (or mistakes for LIVE\Podcast), and fixing files with errors. (presumes --m4b)
 *   **--m4b**                   Output M4B Audiobook format. One file with chapters & cover.
 *   **--m4bbitrate=**           Set the bitrate used by --reencode (defaults to 64k).
-*   **--mp3**                   MP3 one file per-chapter with M3U. Implied if passed an M4B file.
+*   **--mp3**                   Output MP3 one file per-chapter with M3U. Implied if passed an M4B file.
 *   **--mp3bitrate=**           Set the MP3 encode bitrate (defaults to 64k).
 
 

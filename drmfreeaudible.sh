@@ -10,7 +10,7 @@ Accepts Audible AAX and unencrypted M4B (for MP3 conversion)
 Requirements
 ============
 AAX input files require Audible activation bytes placed with this script
-in a file named 'bytes.txt' or specified on command like using --bytes
+in a file named 'bytes.txt' or specified on command line using --bytes
 Can be obtained using https://github.com/inAudible-NG/audible-activator
  
 Dependencies : ffmpeg, AtomicParsley, jq, lame, GNU Parallel
