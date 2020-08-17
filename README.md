@@ -34,15 +34,19 @@ Dependencies : ffmpeg, AtomicParsley, jq, lame, GNU Parallel
 
  ## Example Usage
 Create DRM Free M4B file from Audible AAX (with bytes in bytes.txt file)
+
 `./drmfreeaudible.sh  book.aax --m4b`
 
 Batch process multiple Audible AAX files (with bytes in bytes.txt file)
+
 `./drmfreeaudible.sh  ./my_audiable_books/*.aax --m4b`
 
 Create DRM free M4b and MP3 set from Audible AAX with bytes on cmd line.
+
 `./drmfreeaudible.sh  book.aax --bytes=XXXXXX --m4b --mp3`
 
 Create per chapter MP3 with low bitrate from M4B file (no bytes required)
+
 `./drmfreeaudible.sh  book.m4b --mp3 --mp3bitrate=32k`
 
 For unattened batch processing (*.aax or *.m4b as input) do a --dryrun and replace any files that show error messages if possible .. or just YOLO. Use of --reencode is reccomended as it maybe might clean up and fix some issues with source files.
