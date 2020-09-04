@@ -345,7 +345,9 @@ for INPUT_FILE in "${INPUT_FILES[@]}"; do
             echo -e $COMMAND | tee -a "$JOBCOVER" 1> /dev/null
 
             # m3u line
-            LENGTH=$(( $(date -d "${END_TIME[$i]}" "+%s") - $(date -d "${START_TIME[$i]}" "+%s") ))
+            BEGSECS=$( echo "${START_TIME[$i]}" | awk -F: '{ print ($1 * 3600) + ($2 * 60) + $3 }' )
+            ENDSECS=$( echo "${END_TIME[$i]}" | awk -F: '{ print ($1 * 3600) + ($2 * 60) + $3 }' )
+            LENGTH=$( echo "scale=0;($ENDSECS-$BEGSECS+0.5)/1" | bc )
             echo "#EXTINF: $LENGTH, $FSBOOKTITLE - ${TITLE[$i]}" | tee -a "$PLAYLIST" 1> /dev/null
             echo "$OUTPUT_FINAL" | tee -a "$PLAYLIST" 1> /dev/null
         done
