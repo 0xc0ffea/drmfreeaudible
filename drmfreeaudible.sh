@@ -209,7 +209,11 @@ Can be obtained using https://github.com/inAudible-NG/audible-activator
 fi
 
 #set ffmepeg abytes argument block
-ABYTES="-activation_bytes $BYTES"
+if [ -z "$BYTES" ]; then
+    ABYTES=""
+else
+    ABYTES="-activation_bytes $BYTES"
+fi
 
 
 #Vroom Vrooom
