@@ -326,7 +326,7 @@ for INPUT_FILE in "${INPUT_FILES[@]}"; do
             OUTPUT_ENCODE="_$TRACKNO.mp3"
             OUTPUT_FINAL="$(printf "%02d" $TRACKNO). $FSBOOKTITLE - ${TITLE[$i]}.mp3"
             COMMAND="echo \"$WORKPATH/mp3/$OUTPUT_ENCODE\" && \
-                ffmpeg $FFMPEG_LOGLEVEL -i \"$DRMFREE\" -vn -c libmp3lame \
+                ffmpeg $FFMPEG_LOGLEVEL -i \"${DRMFREE/"\$"/"\\\$"}\" -vn -c libmp3lame \
                 -ss ${START_TIME[$i]} -to ${END_TIME[$i]} \
                 -id3v2_version 4 \
                 -metadata title=\"${TITLE[$i]}\" \
@@ -345,7 +345,7 @@ for INPUT_FILE in "${INPUT_FILES[@]}"; do
             echo -e $COMMAND | tee -a "$JOBENCODER" 1> /dev/null
 
             # cover job (set final filename here too)
-            COMMAND="ffmpeg $FFMPEG_LOGLEVEL -i \"$WORKPATH/mp3/$OUTPUT_ENCODE\" -i \"$COVERIMG\" -c copy -map 0 -map 1 -metadata:s:v title=\"Album cover\" -metadata:s:v comment=\"Cover (Front)\" \"$WORKPATH/mp3/$OUTPUT_FINAL\" && rm \"$WORKPATH/mp3/$OUTPUT_ENCODE\""
+            COMMAND="ffmpeg $FFMPEG_LOGLEVEL -i \"$WORKPATH/mp3/$OUTPUT_ENCODE\" -i \"$COVERIMG\" -c copy -map 0 -map 1 -metadata:s:v title=\"Album cover\" -metadata:s:v comment=\"Cover (Front)\" \"$WORKPATH/mp3/${OUTPUT_FINAL/"\$"/"\\\$"}\" && rm \"$WORKPATH/mp3/$OUTPUT_ENCODE\""
             echo -e $COMMAND | tee -a "$JOBCOVER" 1> /dev/null
 
             # m3u line
