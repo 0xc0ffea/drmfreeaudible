@@ -86,7 +86,9 @@ or
 
 `\\wsl$`
 
-Then navigate to the folder you installed the script. Typically under `_your_distro_name_/home/_your_username_/drmfreeaudible`
+Then navigate to the folder you installed the script. Typically under
+
+`_your_distro_name_/home/_your_username_/drmfreeaudible`
 
 
 
