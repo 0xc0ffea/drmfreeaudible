@@ -60,7 +60,7 @@ Windows users must install the Windows Linux Subsystem (WSL) first. See https://
 
 This assumes you're using a debian derived distribution (or for Windows WSL users, have installed from from the Windows Store) such as Ubuntu.
 
-Start a LInux/WSL terminal and install the dependencies.
+Start a Linux/WSL terminal and install the dependencies.
 
 `sudo apt install git ffmpeg libavcodec-extra atomicparsley jq parallel`
 
@@ -86,7 +86,7 @@ or
 
 `\\wsl$`
 
-Then navigate to the folder you installed the script. Typically under '_your_distro_name_/home/_your_username_/drmfreeaudible
+Then navigate to the folder you installed the script. Typically under `_your_distro_name_/home/_your_username_/drmfreeaudible`
 
 
 
