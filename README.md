@@ -56,7 +56,7 @@ Some M4B files will show in iTunes as being LIVE\Podcast and not show correct ru
 
 ## Installation notes (including Windows WSL)
 
-Windows users must install the Windows Linux Subsystem (WSL) first. See https://docs.microsoft.com/en-us/windows/wsl/install-win10
+Windows users must install the WSL (Windows subsystem for Linux) from Microsoft first. See https://docs.microsoft.com/en-us/windows/wsl/install-win10
 
 This assumes you're using a debian derived distribution (or for Windows WSL users, have installed from from the Windows Store) such as Ubuntu.
 
