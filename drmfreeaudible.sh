@@ -14,7 +14,7 @@ in a file named 'bytes.txt' or specified on command line using --bytes
 Can be obtained using https://github.com/inAudible-NG/audible-activator
  
 Dependencies : ffmpeg, AtomicParsley, jq, lame, GNU Parallel
-sudo apt install ffmpeg libavcodec-extra AtomicParsley jq parallel
+sudo apt install ffmpeg libavcodec-extra atomicparsley jq parallel
 
 
 Usage
